@@ -1,7 +1,12 @@
 // ============================================
 // API Helper - Centralised fetch calls
 // ============================================
-const API_BASE = 'http://localhost:5000/api';
+// When running locally, the Vite/live-server proxies nothing,
+// so fall back to localhost.  On Netlify, /api is proxied to
+// the Render backend via netlify.toml redirect.
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000/api'
+    : '/api';
 
 const api = {
     getToken() {

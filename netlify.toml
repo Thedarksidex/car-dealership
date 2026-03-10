@@ -1,0 +1,33 @@
+# ============================================================
+# Netlify Configuration – Maruti Suzuki Dealership
+# Frontend (static) + Backend (Netlify Function) + Render PG
+# ============================================================
+
+[build]
+  publish = "frontend"
+  # Install backend deps so the function bundler can find them
+  command = "cd backend && npm install"
+  functions = "backend/netlify-functions"
+
+[functions]
+  # esbuild traces all requires and bundles them automatically
+  node_bundler = "esbuild"
+
+# ── API → Netlify Function ────────────────────────────────────
+# All /api/* requests are rewritten to the serverless function.
+# The original URL (/api/...) is preserved so Express routes
+# match correctly.
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/api"
+  status = 200
+  force  = true
+
+# ── Security headers (applied to every response) ─────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "camera=(), microphone=(), geolocation=()"

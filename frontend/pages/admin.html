@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel – Maruti Suzuki Showroom</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-header">
+                <span>Admin Panel</span>
+                <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#" class="sidebar-link" data-tab="cars"><i class="fas fa-car"></i> Cars</a>
+                <a href="#" class="sidebar-link" data-tab="testdrives"><i class="fas fa-calendar-check"></i> Test Drives</a>
+                <a href="#" class="sidebar-link" data-tab="enquiries"><i class="fas fa-envelope"></i> Enquiries</a>
+                <a href="#" class="sidebar-link" data-tab="offers"><i class="fas fa-tag"></i> Offers</a>
+                <a href="#" class="sidebar-link" data-tab="users"><i class="fas fa-users"></i> Users</a>
+                <a href="#" class="sidebar-link" data-tab="faqs"><i class="fas fa-question-circle"></i> FAQs</a>
+                <hr>
+                <a href="../index.html" class="sidebar-link"><i class="fas fa-home"></i> Back to Site</a>
+                <a href="#" class="sidebar-link" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="admin-main">
+            <header class="admin-header">
+                <button class="btn-icon" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+                <span class="admin-title" id="adminPageTitle">Dashboard</span>
+                <span class="admin-user-name" id="adminUserNameDisplay"></span>
+            </header>
+
+            <div class="admin-content">
+                <div id="alertBox"></div>
+
+                <!-- Dashboard Tab -->
+                <div class="tab-content active" id="tab-dashboard">
+                    <div class="stats-grid">
+                        <div class="stat-card"><i class="fas fa-users stat-icon blue"></i><div><span class="stat-num" id="statUsers">-</span><span class="stat-lbl">Total Users</span></div></div>
+                        <div class="stat-card"><i class="fas fa-car stat-icon green"></i><div><span class="stat-num" id="statCars">-</span><span class="stat-lbl">Total Cars</span></div></div>
+                        <div class="stat-card"><i class="fas fa-calendar stat-icon orange"></i><div><span class="stat-num" id="statTestDrives">-</span><span class="stat-lbl">Pending Test Drives</span></div></div>
+                        <div class="stat-card"><i class="fas fa-envelope stat-icon red"></i><div><span class="stat-num" id="statEnquiries">-</span><span class="stat-lbl">Pending Enquiries</span></div></div>
+                    </div>
+                    <div class="admin-tables-row">
+                        <div class="admin-table-card">
+                            <h3>Recent Test Drive Bookings</h3>
+                            <div id="recentBookingsTable"></div>
+                        </div>
+                        <div class="admin-table-card">
+                            <h3>Recent Enquiries</h3>
+                            <div id="recentEnquiriesTable"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cars Tab -->
+                <div class="tab-content" id="tab-cars">
+                    <div class="tab-header">
+                        <h2>Manage Cars</h2>
+                        <button class="btn btn-primary" id="addCarBtn"><i class="fas fa-plus"></i> Add Car</button>
+                    </div>
+                    <div id="adminCarsTable"></div>
+                </div>
+
+                <!-- Test Drives Tab -->
+                <div class="tab-content" id="tab-testdrives">
+                    <div class="tab-header"><h2>Test Drive Bookings</h2></div>
+                    <div id="adminTestDrivesTable"></div>
+                </div>
+
+                <!-- Enquiries Tab -->
+                <div class="tab-content" id="tab-enquiries">
+                    <div class="tab-header"><h2>Enquiries</h2></div>
+                    <div id="adminEnquiriesTable"></div>
+                </div>
+
+                <!-- Offers Tab -->
+                <div class="tab-content" id="tab-offers">
+                    <div class="tab-header">
+                        <h2>Manage Offers</h2>
+                        <button class="btn btn-primary" id="addOfferBtn"><i class="fas fa-plus"></i> Add Offer</button>
+                    </div>
+                    <div id="adminOffersTable"></div>
+                </div>
+
+                <!-- Users Tab -->
+                <div class="tab-content" id="tab-users">
+                    <div class="tab-header"><h2>Users</h2></div>
+                    <div id="adminUsersTable"></div>
+                </div>
+
+                <!-- FAQs Tab -->
+                <div class="tab-content" id="tab-faqs">
+                    <div class="tab-header">
+                        <h2>Manage FAQs</h2>
+                        <button class="btn btn-primary" id="addFaqBtn"><i class="fas fa-plus"></i> Add FAQ</button>
+                    </div>
+                    <div id="adminFaqsTable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay hidden" id="modalOverlay">
+        <div class="modal" id="adminModal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal</h3>
+                <button class="btn-icon" id="modalClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

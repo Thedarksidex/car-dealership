@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maruti Suzuki Showroom</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/maruti-logo.png" alt="Maruti Suzuki" onerror="this.style.display='none'">
+                <span>Maruti Suzuki</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="pages/cars.html" class="nav-link">Cars</a></li>
+                <li><a href="pages/offers.html" class="nav-link">Offers</a></li>
+                <li><a href="pages/test-drive.html" class="nav-link">Test Drive</a></li>
+                <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-auth" id="navAuthLinks">
+                    <a href="pages/login.html" class="btn btn-outline">Login</a>
+                    <a href="pages/register.html" class="btn btn-primary">Register</a>
+                </li>
+                <li class="nav-user hidden" id="navUserMenu">
+                    <a href="pages/wishlist.html" class="nav-link"><i class="fas fa-heart"></i></a>
+                    <div class="dropdown">
+                        <button class="btn btn-outline dropdown-toggle" id="userDropdownBtn">
+                            <i class="fas fa-user"></i> <span id="navUserName">Account</span>
+                        </button>
+                        <div class="dropdown-menu" id="userDropdown">
+                            <a href="pages/profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                            <a href="pages/my-bookings.html"><i class="fas fa-calendar-check"></i> My Bookings</a>
+                            <a href="pages/my-enquiries.html"><i class="fas fa-envelope"></i> My Enquiries</a>
+                            <a href="pages/wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+                            <a href="pages/admin.html" id="adminLink" class="hidden"><i class="fas fa-shield-alt"></i> Admin Panel</a>
+                            <hr>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Drive Your <span class="text-red">Dream Car</span></h1>
+            <p>Explore the latest Maruti Suzuki lineup — built for every journey, every family, every dream.</p>
+            <div class="hero-btns">
+                <a href="pages/cars.html" class="btn btn-primary btn-lg">Explore Cars</a>
+                <a href="pages/test-drive.html" class="btn btn-outline btn-lg">Book Test Drive</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat"><span class="stat-number">6+</span><span class="stat-label">Car Models</span></div>
+            <div class="stat"><span class="stat-number">500+</span><span class="stat-label">Happy Customers</span></div>
+            <div class="stat"><span class="stat-number">3+</span><span class="stat-label">Active Offers</span></div>
+            <div class="stat"><span class="stat-number">10+</span><span class="stat-label">Years of Trust</span></div>
+        </div>
+    </section>
+
+    <!-- Featured Cars -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Popular Models</h2>
+                <p>Discover the cars that millions of Indians trust</p>
+            </div>
+            <div class="cars-grid" id="featuredCars">
+                <div class="loading-spinner"><i class="fas fa-circle-notch fa-spin"></i> Loading cars...</div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="pages/cars.html" class="btn btn-primary">View All Cars</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Us?</h2>
+                <p>Your trusted Maruti Suzuki dealership</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-medal feature-icon"></i>
+                    <h3>Authorised Dealer</h3>
+                    <p>Official Maruti Suzuki dealership with certified professionals and genuine spare parts.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hand-holding-usd feature-icon"></i>
+                    <h3>Best Price</h3>
+                    <p>Competitive pricing with transparent deals, no hidden charges, and flexible finance options.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-car feature-icon"></i>
+                    <h3>Test Drive at Home</h3>
+                    <p>Book a test drive and we will bring the car to your doorstep. Experience before you buy.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tools feature-icon"></i>
+                    <h3>Service Support</h3>
+                    <p>Post-purchase service support with state-of-the-art service centre and trained technicians.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Offers -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Current Offers</h2>
+                <p>Exclusive deals just for you</p>
+            </div>
+            <div class="offers-grid" id="homeOffers">
+                <div class="loading-spinner"><i class="fas fa-circle-notch fa-spin"></i> Loading offers...</div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="pages/offers.html" class="btn btn-primary">View All Offers</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2>Ready to Own Your Dream Car?</h2>
+            <p>Book a test drive today or get in touch with our experts for a personalised consultation.</p>
+            <div class="hero-btns">
+                <a href="pages/test-drive.html" class="btn btn-primary btn-lg">Book Test Drive</a>
+                <a href="pages/contact.html" class="btn btn-white btn-lg">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Maruti Suzuki Showroom</h3>
+                    <p>Your trusted dealership for all Maruti Suzuki cars. We deliver quality, trust, and value.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/cars.html">Our Cars</a></li>
+                        <li><a href="pages/offers.html">Offers</a></li>
+                        <li><a href="pages/test-drive.html">Test Drive</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Cars</h4>
+                    <ul>
+                        <li><a href="pages/cars.html">Swift DZire</a></li>
+                        <li><a href="pages/cars.html">Baleno</a></li>
+                        <li><a href="pages/cars.html">Brezza</a></li>
+                        <li><a href="pages/cars.html">Fronx</a></li>
+                        <li><a href="pages/cars.html">Ertiga</a></li>
+                        <li><a href="pages/cars.html">Grand Vitara</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main Road, Mumbai, MH 400001</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@marutishowroom.com</li>
+                        <li><i class="fas fa-clock"></i> Mon–Sat: 9am – 7pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Maruti Suzuki Showroom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

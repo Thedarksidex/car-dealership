@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us – Maruti Suzuki Showroom</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span>Maruti Suzuki</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="cars.html" class="nav-link">Cars</a></li>
+                <li><a href="offers.html" class="nav-link">Offers</a></li>
+                <li><a href="test-drive.html" class="nav-link">Test Drive</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li class="nav-auth" id="navAuthLinks">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </li>
+                <li class="nav-user hidden" id="navUserMenu">
+                    <div class="dropdown">
+                        <button class="btn btn-outline dropdown-toggle" id="userDropdownBtn">
+                            <i class="fas fa-user"></i> <span id="navUserName">Account</span>
+                        </button>
+                        <div class="dropdown-menu" id="userDropdown">
+                            <a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                            <a href="admin.html" id="adminLink" class="hidden"><i class="fas fa-shield-alt"></i> Admin Panel</a>
+                            <hr>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="contact-info-panel">
+                    <h3>Visit Us</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div><strong>Address</strong><p>123 Main Road, Andheri West,<br>Mumbai, Maharashtra 400001</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div><strong>Phone</strong><p>+91 98765 43210<br>+91 22 4567 8900</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><strong>Email</strong><p>info@marutishowroom.com<br>sales@marutishowroom.com</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div><strong>Working Hours</strong><p>Monday – Saturday: 9:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 5:00 PM</p></div>
+                    </div>
+                </div>
+                <div class="form-card">
+                    <h3 class="form-title">Send an Enquiry</h3>
+                    <div id="alertBox"></div>
+                    <form id="enquiryForm">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" id="enqName" class="form-control" placeholder="Your name" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email *</label>
+                                <input type="email" id="enqEmail" class="form-control" placeholder="Your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone *</label>
+                                <input type="tel" id="enqPhone" class="form-control" placeholder="10-digit number" pattern="[0-9]{10}" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Car of Interest *</label>
+                                <select id="enqCarId" class="form-control" required>
+                                    <option value="">Select a car</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Enquiry Type</label>
+                                <select id="enqType" class="form-control">
+                                    <option value="purchase">Purchase</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="service">Service</option>
+                                    <option value="general">General</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea id="enqMessage" class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> Send Enquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container"><div class="footer-bottom"><p>&copy; 2026 Maruti Suzuki Showroom. All rights reserved.</p></div></div>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/contact.js"></script>
+</body>
+</html>

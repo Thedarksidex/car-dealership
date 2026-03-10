@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Cars – Maruti Suzuki Showroom</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span>Maruti Suzuki</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="cars.html" class="nav-link active">Cars</a></li>
+                <li><a href="offers.html" class="nav-link">Offers</a></li>
+                <li><a href="test-drive.html" class="nav-link">Test Drive</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-auth" id="navAuthLinks">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </li>
+                <li class="nav-user hidden" id="navUserMenu">
+                    <a href="wishlist.html" class="nav-link"><i class="fas fa-heart"></i></a>
+                    <div class="dropdown">
+                        <button class="btn btn-outline dropdown-toggle" id="userDropdownBtn">
+                            <i class="fas fa-user"></i> <span id="navUserName">Account</span>
+                        </button>
+                        <div class="dropdown-menu" id="userDropdown">
+                            <a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                            <a href="my-bookings.html"><i class="fas fa-calendar-check"></i> My Bookings</a>
+                            <a href="my-enquiries.html"><i class="fas fa-envelope"></i> My Enquiries</a>
+                            <a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+                            <a href="admin.html" id="adminLink" class="hidden"><i class="fas fa-shield-alt"></i> Admin Panel</a>
+                            <hr>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Our Cars</h1>
+            <p>Find your perfect Maruti Suzuki</p>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <section class="section">
+        <div class="container">
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by name...">
+                </div>
+                <div class="filter-group">
+                    <select id="fuelFilter" class="form-control">
+                        <option value="">All Fuel Types</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="CNG">CNG</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="transmissionFilter" class="form-control">
+                        <option value="">All Transmissions</option>
+                        <option value="Manual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <input type="number" id="minPrice" class="form-control" placeholder="Min Price (₹)">
+                </div>
+                <div class="filter-group">
+                    <input type="number" id="maxPrice" class="form-control" placeholder="Max Price (₹)">
+                </div>
+                <button class="btn btn-primary" id="applyFilters">Search</button>
+                <button class="btn btn-outline" id="clearFilters">Clear</button>
+            </div>
+
+            <div class="cars-grid" id="carsGrid">
+                <div class="loading-spinner"><i class="fas fa-circle-notch fa-spin"></i> Loading cars...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Maruti Suzuki Showroom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/cars.js"></script>
+</body>
+</html>

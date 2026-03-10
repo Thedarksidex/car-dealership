@@ -120,7 +120,21 @@ async function loadAdminCars() {
     } catch { container.innerHTML = '<p style="color:#dc3545">Failed to load.</p>'; }
 }
 
+function colorImageRowHTML(color = '', url = '') {
+    return `<div class="color-image-row" style="display:flex;gap:8px;margin-bottom:8px;align-items:center">
+        <input class="form-control color-name-input" placeholder="Color (e.g. Metallic Blue)" value="${color}" style="flex:1;min-width:0">
+        <input class="form-control color-url-input" placeholder="Image URL" value="${url}" style="flex:2;min-width:0">
+        <button type="button" class="btn btn-danger btn-sm" onclick="this.parentElement.remove()">&#x2715;</button>
+    </div>`;
+}
+
+function addColorImageRow() {
+    document.getElementById('colorImagesList').insertAdjacentHTML('beforeend', colorImageRowHTML());
+}
+
 function carFormHTML(car = {}) {
+    const colorImages = (car.color_images && typeof car.color_images === 'object') ? car.color_images : {};
+    const colorRows = Object.entries(colorImages).map(([color, url]) => colorImageRowHTML(color, url)).join('');
     return `<form id="carModalForm">
         <div class="form-row">
             <div class="form-group"><label class="form-label">Name *</label><input class="form-control" id="mCarName" value="${car.name || ''}" required></div>
@@ -148,9 +162,12 @@ function carFormHTML(car = {}) {
         </div>
         <div class="form-row">
             <div class="form-group"><label class="form-label">Seating Capacity</label><input type="number" class="form-control" id="mCarSeats" value="${car.seating_capacity || ''}"></div>
-            <div class="form-group"><label class="form-label">Image URL</label><input class="form-control" id="mCarImage" value="${car.image_url || ''}"></div>
         </div>
-        <div class="form-group"><label class="form-label">Color Options</label><input class="form-control" id="mCarColors" value="${car.color_options || ''}" placeholder="Silver, Black, White"></div>
+        <div class="form-group">
+            <label class="form-label">Color Images <small style="font-weight:400;color:#6c757d">(color name &rarr; image URL)</small></label>
+            <div id="colorImagesList">${colorRows}</div>
+            <button type="button" class="btn btn-outline btn-sm" onclick="addColorImageRow()" style="margin-top:8px"><i class="fas fa-plus"></i> Add Color</button>
+        </div>
         <div class="form-group"><label class="form-label">Features</label><input class="form-control" id="mCarFeatures" value="${car.features || ''}" placeholder="ABS, Airbags, Touchscreen"></div>
         <div class="form-group"><label class="form-label">Description</label><textarea class="form-control" id="mCarDesc" rows="2">${car.description || ''}</textarea></div>
         <div id="carModalAlert"></div>
@@ -181,6 +198,13 @@ function openEditCarModal(car) {
 }
 
 function getCarFormData() {
+    const colorImages = {};
+    document.querySelectorAll('#colorImagesList .color-image-row').forEach(row => {
+        const color = row.querySelector('.color-name-input').value.trim();
+        const url = row.querySelector('.color-url-input').value.trim();
+        if (color && url) colorImages[color] = url;
+    });
+    const image_url = Object.values(colorImages)[0] || '';
     return {
         name: document.getElementById('mCarName').value,
         model: document.getElementById('mCarModel').value,
@@ -191,8 +215,8 @@ function getCarFormData() {
         engine_cc: document.getElementById('mCarEngine').value,
         seating_capacity: document.getElementById('mCarSeats').value,
         description: document.getElementById('mCarDesc').value,
-        image_url: document.getElementById('mCarImage').value,
-        color_options: document.getElementById('mCarColors').value,
+        image_url,
+        color_images: colorImages,
         features: document.getElementById('mCarFeatures').value,
         stock: document.getElementById('mCarStock').value,
     };

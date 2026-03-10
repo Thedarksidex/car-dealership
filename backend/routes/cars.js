@@ -46,15 +46,16 @@ router.get('/:id', async (req, res) => {
 
 // POST /api/cars - Add car (admin only)
 router.post('/', authenticateToken, requireAdmin, async (req, res) => {
-    const { name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, color_options, features, stock } = req.body;
+    const { name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, color_images, features, stock } = req.body;
     if (!name || !model || !price || !mileage || !fuel_type || !transmission) {
         return res.status(400).json({ success: false, message: 'Required fields missing' });
     }
     try {
+        const colorImagesVal = color_images ? JSON.stringify(color_images) : null;
         const result = await pool.query(
-            `INSERT INTO cars (name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, color_options, features, stock)
+            `INSERT INTO cars (name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, color_images, features, stock)
              VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) RETURNING *`,
-            [name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, color_options, features, stock || 0]
+            [name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, colorImagesVal, features, stock || 0]
         );
         res.status(201).json({ success: true, message: 'Car added successfully', car: result.rows[0] });
     } catch (err) {
@@ -64,13 +65,14 @@ router.post('/', authenticateToken, requireAdmin, async (req, res) => {
 
 // PUT /api/cars/:id - Update car (admin only)
 router.put('/:id', authenticateToken, requireAdmin, async (req, res) => {
-    const { name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, color_options, features, stock } = req.body;
+    const { name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, color_images, features, stock } = req.body;
     try {
+        const colorImagesVal = color_images ? JSON.stringify(color_images) : null;
         const result = await pool.query(
             `UPDATE cars SET name=$1, model=$2, price=$3, mileage=$4, fuel_type=$5, transmission=$6,
-             engine_cc=$7, seating_capacity=$8, description=$9, image_url=$10, color_options=$11,
+             engine_cc=$7, seating_capacity=$8, description=$9, image_url=$10, color_images=$11,
              features=$12, stock=$13, updated_at=CURRENT_TIMESTAMP WHERE id=$14 RETURNING *`,
-            [name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, color_options, features, stock, req.params.id]
+            [name, model, price, mileage, fuel_type, transmission, engine_cc, seating_capacity, description, image_url, colorImagesVal, features, stock, req.params.id]
         );
         if (result.rows.length === 0) {
             return res.status(404).json({ success: false, message: 'Car not found' });

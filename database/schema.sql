@@ -30,7 +30,7 @@ CREATE TABLE cars (
     seating_capacity INT,
     description TEXT,
     image_url VARCHAR(255),
-    color_options VARCHAR(255),
+    color_images JSONB,
     features TEXT,
     stock INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -87,6 +87,12 @@ CREATE TABLE wishlist (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(user_id, car_id)
 );
+
+-- ============================================
+-- Migration: If the table already exists, run:
+--   ALTER TABLE cars DROP COLUMN IF EXISTS color_options;
+--   ALTER TABLE cars ADD COLUMN IF NOT EXISTS color_images JSONB;
+-- ============================================
 
 -- Create FAQs Table
 CREATE TABLE faqs (

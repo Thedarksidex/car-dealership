@@ -152,7 +152,7 @@ If using VS Code, use the **Live Server** extension (right-click → `Open with 
 
 | Role  | Email                          | Password   |
 |-------|--------------------------------|------------|
-| Admin | admin@marutishowroom.com       | Admin@123  |
+| Admin | admin@marutishowroom.com       | admin123  |
 
 **Note:** You can register regular user accounts via the Register page.
 

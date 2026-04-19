@@ -1,4 +1,11 @@
 {
+  "name": "maruti-dealership",
+  "version": "1.0.0",
+  "description": "Maruti Suzuki Dealership Website",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev"
+  },
   "devDependencies": {
     "docx": "^9.6.1"
   }
